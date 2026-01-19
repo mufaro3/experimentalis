@@ -1,0 +1,9 @@
+dataclasses
+numpy
+matplotlib
+pandas
+scipy
+pillow
+tabulate
+prettyprinter
+IPython

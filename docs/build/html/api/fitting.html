@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Model Fitting &#8212; experimentalis 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=34905f61" />
+    <script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Modelling" href="models.html" />
+    <link rel="prev" title="Data Management" href="data.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="Modelling"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="data.html" title="Data Management"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">experimentalis 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Model Fitting</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-experimentalis.fitting">
+<span id="model-fitting"></span><h1>Model Fitting<a class="headerlink" href="#module-experimentalis.fitting" title="Link to this heading">¶</a></h1>
+<p>The fitting module is for actually performing fits to data using the
+previously defined fit models to estimate model parameters.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="experimentalis.fitting.FitModelResult">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">experimentalis.fitting.</span></span><span class="sig-name descname"><span class="pre">FitModelResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial_guess_graph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_guess_residuals_graph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autofit_graph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autofit_residuals_graph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chi2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covariance_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.fitting.FitModelResult" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A result structure for collecting and displaying fit results visually.
+Produced automatically after performing an <code class="docutils literal notranslate"><span class="pre">autofit</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>initial_guess_graph</strong> (<em>Image</em>) – A plot of the model pre-optimization, using the initial parameter guesses (if provided).</p></li>
+<li><p><strong>initial_guess_residuals_graph</strong> (<em>Image</em>) – A plot of the residuals of the initial values.</p></li>
+<li><p><strong>autofit_graph</strong> (<em>Image</em>) – A plot of the model post-optimization.</p></li>
+<li><p><strong>autofit_residuals_graph</strong> (<em>Image</em>) – A plot of the post-optimization model residuals.</p></li>
+<li><p><strong>chi2</strong> (<em>float</em>) – The goodness-of-fit of the model post-optimization.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.fitting.FitModelResult.autofit_graph">
+<span class="sig-name descname"><span class="pre">autofit_graph</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#experimentalis.fitting.FitModelResult.autofit_graph" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.fitting.FitModelResult.autofit_residuals_graph">
+<span class="sig-name descname"><span class="pre">autofit_residuals_graph</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#experimentalis.fitting.FitModelResult.autofit_residuals_graph" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.fitting.FitModelResult.chi2">
+<span class="sig-name descname"><span class="pre">chi2</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#experimentalis.fitting.FitModelResult.chi2" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.fitting.FitModelResult.covariance_matrix">
+<span class="sig-name descname"><span class="pre">covariance_matrix</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#experimentalis.fitting.FitModelResult.covariance_matrix" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.fitting.FitModelResult.initial_guess_graph">
+<span class="sig-name descname"><span class="pre">initial_guess_graph</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#experimentalis.fitting.FitModelResult.initial_guess_graph" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.fitting.FitModelResult.initial_guess_residuals_graph">
+<span class="sig-name descname"><span class="pre">initial_guess_residuals_graph</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#experimentalis.fitting.FitModelResult.initial_guess_residuals_graph" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="experimentalis.fitting.autofit">
+<span class="sig-prename descclassname"><span class="pre">experimentalis.fitting.</span></span><span class="sig-name descname"><span class="pre">autofit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graphing_options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.fitting.autofit" title="Link to this definition">¶</a></dt>
+<dd><p>Optimizes a model to fit a dataset (editing the model in-place), and
+plots the results to a <code class="docutils literal notranslate"><span class="pre">FitModelResult</span></code> object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="data.html#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset"><em>Dataset</em></a>) – The dataset to fit to.</p></li>
+<li><p><strong>model</strong> (<a class="reference internal" href="models.html#experimentalis.models.Model" title="experimentalis.models.Model"><em>Model</em></a>) – The model.</p></li>
+<li><p><strong>graphing_options</strong> (<a class="reference internal" href="plotting.html#experimentalis.plotting.GraphingOptions" title="experimentalis.plotting.GraphingOptions"><em>GraphingOptions</em></a>) – The graphing options for plotting.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The results of the optimization.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#experimentalis.fitting.FitModelResult" title="experimentalis.fitting.FitModelResult">FitModelResult</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="experimentalis.fitting.calculate_chi_squared">
+<span class="sig-prename descclassname"><span class="pre">experimentalis.fitting.</span></span><span class="sig-name descname"><span class="pre">calculate_chi_squared</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.fitting.calculate_chi_squared" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates the goodness-of-fit <span class="math notranslate nohighlight">\(\chi^2\)</span> for a given model
+post-fitting via the equation</p>
+<div class="math notranslate nohighlight">
+\[\chi^2 = \frac{1}{N} \sum_{i=1}^{N} \left( \frac{y_i - f(x_i)}{dy} \right)^2\]</div>
+<p>given model <span class="math notranslate nohighlight">\(f\)</span> and dataset <span class="math notranslate nohighlight">\(D_i=(x_i,y_i)\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<a class="reference internal" href="models.html#experimentalis.models.Model" title="experimentalis.models.Model"><em>Model</em></a>) – The model post-optimization.</p></li>
+<li><p><strong>dataset</strong> (<a class="reference internal" href="data.html#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset"><em>Dataset</em></a>) – The dataset to compare against.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The goodness-of-fit <span class="math notranslate nohighlight">\(\chi^2\)</span>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="experimentalis.fitting.print_results">
+<span class="sig-prename descclassname"><span class="pre">experimentalis.fitting.</span></span><span class="sig-name descname"><span class="pre">print_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_cov</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.fitting.print_results" title="Link to this definition">¶</a></dt>
+<dd><p>Prints the results of a fitting in a tabulated format, with the optional
+inclusion of the covariance matrix for the parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<a class="reference internal" href="models.html#experimentalis.models.Model" title="experimentalis.models.Model"><em>Model</em></a>) – The fit model, used to access the optimized parameters.</p></li>
+<li><p><strong>results</strong> (<em>FitModelResults</em>) – The results of the fitting. Used to access the covariance matrix and the goodness-of-fit.</p></li>
+<li><p><strong>print_cov</strong> (<em>bool</em>) – Whether or not to include the covariance matrix.</p></li>
+<li><p><strong>units</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – The (optional) ordered list of units for each parameter.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/favicon-32x32.png" alt="Logo of experimentalis"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Model Fitting</a><ul>
+<li><a class="reference internal" href="#experimentalis.fitting.FitModelResult"><code class="docutils literal notranslate"><span class="pre">FitModelResult</span></code></a><ul>
+<li><a class="reference internal" href="#experimentalis.fitting.FitModelResult.autofit_graph"><code class="docutils literal notranslate"><span class="pre">FitModelResult.autofit_graph</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.fitting.FitModelResult.autofit_residuals_graph"><code class="docutils literal notranslate"><span class="pre">FitModelResult.autofit_residuals_graph</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.fitting.FitModelResult.chi2"><code class="docutils literal notranslate"><span class="pre">FitModelResult.chi2</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.fitting.FitModelResult.covariance_matrix"><code class="docutils literal notranslate"><span class="pre">FitModelResult.covariance_matrix</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.fitting.FitModelResult.initial_guess_graph"><code class="docutils literal notranslate"><span class="pre">FitModelResult.initial_guess_graph</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.fitting.FitModelResult.initial_guess_residuals_graph"><code class="docutils literal notranslate"><span class="pre">FitModelResult.initial_guess_residuals_graph</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#experimentalis.fitting.autofit"><code class="docutils literal notranslate"><span class="pre">autofit()</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.fitting.calculate_chi_squared"><code class="docutils literal notranslate"><span class="pre">calculate_chi_squared()</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.fitting.print_results"><code class="docutils literal notranslate"><span class="pre">print_results()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="data.html"
+                          title="previous chapter">Data Management</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="models.html"
+                          title="next chapter">Modelling</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/fitting.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="Modelling"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="data.html" title="Data Management"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">experimentalis 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Model Fitting</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, Mufaro J. Machaya.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
+    </div>
+  </body>
+</html>

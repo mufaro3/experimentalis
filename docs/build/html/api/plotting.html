@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Plotting and Visual Management &#8212; experimentalis 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=34905f61" />
+    <script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Utility Functions" href="utils.html" />
+    <link rel="prev" title="Modelling" href="models.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="utils.html" title="Utility Functions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="Modelling"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">experimentalis 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Plotting and Visual Management</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-experimentalis.plotting">
+<span id="plotting-and-visual-management"></span><h1>Plotting and Visual Management<a class="headerlink" href="#module-experimentalis.plotting" title="Link to this heading">¶</a></h1>
+<p>The plotting module is used for automatically managing visuals, like a sort
+of wrapper for MatPlotLib directives. The most core object here is
+<cite>GraphingOptions</cite>, which is utilized to create standardized visuals through
+having a standard settings for all graphs produced.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">experimentalis.plotting.</span></span><span class="sig-name descname"><span class="pre">GraphingOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_marker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_marker_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_linestyle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_marker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_linestyle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_linewidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'darkred'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_round</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A standardized structure for creating visuals with the same layout and
+style, such that each plot doesn’t need to be configured manually.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_label</strong> (<em>str</em>) – The label along the <cite>x</cite>-axis.</p></li>
+<li><p><strong>y_label</strong> (<em>str</em>) – The label along the <cite>y</cite>-axis.</p></li>
+<li><p><strong>x_units</strong> (<em>str</em>) – The units of <cite>x</cite> (optional).</p></li>
+<li><p><strong>y_units</strong> (<em>str</em>) – The units of <cite>y</cite> (optional).</p></li>
+<li><p><strong>data_round</strong> – The current round of data collection, used for</p></li>
+</ul>
+</dd>
+</dl>
+<p>automatic title generation.
+:type data_round: int</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.data_alpha">
+<span class="sig-name descname"><span class="pre">data_alpha</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.8</span></span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.data_alpha" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.data_color">
+<span class="sig-name descname"><span class="pre">data_color</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'C0'</span></span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.data_color" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.data_linestyle">
+<span class="sig-name descname"><span class="pre">data_linestyle</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.data_linestyle" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.data_marker">
+<span class="sig-name descname"><span class="pre">data_marker</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'.'</span></span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.data_marker" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.data_marker_size">
+<span class="sig-name descname"><span class="pre">data_marker_size</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.data_marker_size" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.data_round">
+<span class="sig-name descname"><span class="pre">data_round</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.data_round" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.default_title">
+<span class="sig-name descname"><span class="pre">default_title</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.default_title" title="Link to this definition">¶</a></dt>
+<dd><p>Automatically generates a default title for data plotted to a
+figure, which is just the dependent and independent variables
+alongside the round number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The default title</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.model_alpha">
+<span class="sig-name descname"><span class="pre">model_alpha</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1.0</span></span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.model_alpha" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.model_color">
+<span class="sig-name descname"><span class="pre">model_color</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'darkred'</span></span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.model_color" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.model_linestyle">
+<span class="sig-name descname"><span class="pre">model_linestyle</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'-'</span></span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.model_linestyle" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.model_linewidth">
+<span class="sig-name descname"><span class="pre">model_linewidth</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.model_linewidth" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.model_marker">
+<span class="sig-name descname"><span class="pre">model_marker</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.model_marker" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.plot_datasets">
+<span class="sig-name descname"><span class="pre">plot_datasets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datasets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.plot_datasets" title="Link to this definition">¶</a></dt>
+<dd><p>Plots multiple datasets to the image, with optional, but highly
+recommended custom labels and colors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>datasets</strong> (<em>list</em><em>[</em><a class="reference internal" href="data.html#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset"><em>Dataset</em></a><em>]</em>) – A list of the datasets to plot.</p></li>
+<li><p><strong>labels</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – A list of the labels for each dataset.</p></li>
+<li><p><strong>colors</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – A list of the colors for each series.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.plot_individual_dataset">
+<span class="sig-name descname"><span class="pre">plot_individual_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.plot_individual_dataset" title="Link to this definition">¶</a></dt>
+<dd><p>Plots an individual dataset to an active figure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="data.html#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset"><em>Dataset</em></a>) – The dataset to plot</p></li>
+<li><p><strong>label</strong> (<em>str</em>) – The label for this dataset</p></li>
+<li><p><strong>color</strong> (<em>str</em>) – The color for this plot</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.plot_model">
+<span class="sig-name descname"><span class="pre">plot_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.plot_model" title="Link to this definition">¶</a></dt>
+<dd><p>Plots a model curve to an active plot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_x</strong> (<em>NDArray</em>) – The <cite>x</cite>-values for the model.</p></li>
+<li><p><strong>model_y</strong> (<em>NDArray</em>) – The <cite>y</cite>-values for the model.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.plot_residuals">
+<span class="sig-name descname"><span class="pre">plot_residuals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residuals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_uncert</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.plot_residuals" title="Link to this definition">¶</a></dt>
+<dd><p>Produces a residuals plot for a model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>NDArray</em>) – The <cite>x</cite>-values of the data.</p></li>
+<li><p><strong>residuals</strong> (<em>NDArray</em>) – The residuals from the model.</p></li>
+<li><p><strong>y_uncert</strong> (<em>NDArray</em>) – The uncertainty in each residual/datapoint.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.save_graph_and_close">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">save_graph_and_close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.save_graph_and_close" title="Link to this definition">¶</a></dt>
+<dd><p>Saves the active figure to a png-representation variable for
+ease of display or saving later.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+
+<span class="n">graphing_options</span> <span class="o">=</span> <span class="n">GraphingOptions</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="c1"># some plotting code ..</span>
+
+<span class="n">figure</span> <span class="o">=</span> <span class="n">graphing_options</span><span class="o">.</span><span class="n">save_graph_and_close</span><span class="p">()</span>
+
+<span class="c1"># other things</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">figure</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.set_labels">
+<span class="sig-name descname"><span class="pre">set_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.set_labels" title="Link to this definition">¶</a></dt>
+<dd><p>Automatically sets the labels for a the next figure based on
+whether or not the label names are configured to use units.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>xlabel</strong> – Optional label for the <cite>x</cite>-axis, otherwise defaults</p>
+</dd>
+</dl>
+<p>to the label previously set.
+:type xlabel: str
+:type ylabel: str</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.x_label">
+<span class="sig-name descname"><span class="pre">x_label</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.x_label" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.x_units">
+<span class="sig-name descname"><span class="pre">x_units</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.x_units" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.y_label">
+<span class="sig-name descname"><span class="pre">y_label</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.y_label" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.plotting.GraphingOptions.y_units">
+<span class="sig-name descname"><span class="pre">y_units</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#experimentalis.plotting.GraphingOptions.y_units" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/favicon-32x32.png" alt="Logo of experimentalis"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Plotting and Visual Management</a><ul>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions"><code class="docutils literal notranslate"><span class="pre">GraphingOptions</span></code></a><ul>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.data_alpha"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.data_alpha</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.data_color"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.data_color</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.data_linestyle"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.data_linestyle</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.data_marker"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.data_marker</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.data_marker_size"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.data_marker_size</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.data_round"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.data_round</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.default_title"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.default_title()</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.model_alpha"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.model_alpha</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.model_color"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.model_color</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.model_linestyle"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.model_linestyle</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.model_linewidth"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.model_linewidth</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.model_marker"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.model_marker</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.plot_datasets"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.plot_datasets()</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.plot_individual_dataset"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.plot_individual_dataset()</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.plot_model"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.plot_model()</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.plot_residuals"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.plot_residuals()</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.save_graph_and_close"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.save_graph_and_close()</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.set_labels"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.set_labels()</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.x_label"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.x_label</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.x_units"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.x_units</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.y_label"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.y_label</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.plotting.GraphingOptions.y_units"><code class="docutils literal notranslate"><span class="pre">GraphingOptions.y_units</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="models.html"
+                          title="previous chapter">Modelling</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="utils.html"
+                          title="next chapter">Utility Functions</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/plotting.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="utils.html" title="Utility Functions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="Modelling"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">experimentalis 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Plotting and Visual Management</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, Mufaro J. Machaya.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
+    </div>
+  </body>
+</html>

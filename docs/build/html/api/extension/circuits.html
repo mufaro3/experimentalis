@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Circuits Extension Module &#8212; experimentalis 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d75fae25" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinxdoc.css?v=34905f61" />
+    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Oscilloscopes Extension Module" href="oscilloscope.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="oscilloscope.html" title="Oscilloscopes Extension Module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">experimentalis 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Circuits Extension Module</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-experimentalis.extension.circuits">
+<span id="circuits-extension-module"></span><h1>Circuits Extension Module<a class="headerlink" href="#module-experimentalis.extension.circuits" title="Link to this heading">¶</a></h1>
+<p>This extension module is used for dealing with circuits, namely their
+response curves.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="experimentalis.extension.circuits.LRCResponseModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">experimentalis.extension.circuits.</span></span><span class="sig-name descname"><span class="pre">LRCResponseModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">damping_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resonant_frequency</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.extension.circuits.LRCResponseModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../models.html#experimentalis.models.Model" title="experimentalis.models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<blockquote>
+<div><p>A response model for Inductor-Resistor-Capacitor (LRC) circuits in the frequency domain.</p>
+<div class="math notranslate nohighlight" id="equation-eq-lrc-response">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq-lrc-response" title="Link to this equation">¶</a></span>\[V(f) = V_0/\sqrt{1 + \left(\]</div>
+</div></blockquote>
+<p>rac{2pi}{gamma f}
+ight)^2 (f^2 - f^2_0)^2}</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param amplitude<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Amplitude <span class="math notranslate nohighlight">\(V_0\)</span></p>
+</dd>
+<dt class="field-even">param damping_rate<span class="colon">:</span></dt>
+<dd class="field-even"><p>Damping rate <span class="math notranslate nohighlight">\(\gamma = R/L\)</span>, which determines the resonance linewidth and decay rate of oscillations in the time domain.</p>
+</dd>
+<dt class="field-odd">param resonant_frequency<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Phase <span class="math notranslate nohighlight">\(f_0\)</span></p>
+</dd>
+<dt class="field-even">type amplitude<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+<dt class="field-odd">type damping_rate<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">type resonant_frequency<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="experimentalis.extension.circuits.RCResponseModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">experimentalis.extension.circuits.</span></span><span class="sig-name descname"><span class="pre">RCResponseModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_constant</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.extension.circuits.RCResponseModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../models.html#experimentalis.models.Model" title="experimentalis.models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>A response model for Resistor-Capacitor (RC) circuits in the frequency domain.</p>
+<div class="math notranslate nohighlight" id="equation-eq-rc-response">
+<span class="eqno">(2)<a class="headerlink" href="#equation-eq-rc-response" title="Link to this equation">¶</a></span>\[V(f) = V_0 / \sqrt{1 + (2\pi f  au)^2} + V_C\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amplitude</strong> (<em>float</em>) – Amplitude <span class="math notranslate nohighlight">\(V_0\)</span></p></li>
+<li><p><strong>time_constant</strong> (<em>float</em>) – Frequency <span class="math notranslate nohighlight">\(\tau = RC\)</span></p></li>
+<li><p><strong>offset</strong> (<em>float</em>) – Phase <span class="math notranslate nohighlight">\(V_C\)</span></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/favicon-32x32.png" alt="Logo of experimentalis"/>
+            </a></p>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Circuits Extension Module</a><ul>
+<li><a class="reference internal" href="#experimentalis.extension.circuits.LRCResponseModel"><code class="docutils literal notranslate"><span class="pre">LRCResponseModel</span></code></a></li>
+<li><a class="reference internal" href="#experimentalis.extension.circuits.RCResponseModel"><code class="docutils literal notranslate"><span class="pre">RCResponseModel</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="oscilloscope.html"
+                          title="previous chapter">Oscilloscopes Extension Module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/api/extension/circuits.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="oscilloscope.html" title="Oscilloscopes Extension Module"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">experimentalis 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Circuits Extension Module</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, Mufaro J. Machaya.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
+    </div>
+  </body>
+</html>
