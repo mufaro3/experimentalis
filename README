@@ -1,0 +1,27 @@
+experimentalis
+
+The Experimentalis ("Experiment Analysis") Library is a series of functions
+that have evolved out of a several thousand line long mess of laboratory
+analysis functions that I've been developing over the past two years.
+
+It was originally designed for performing some very, very simple data
+analysis and model fitting, particularly for working with oscilloscopes
+and circuits, but as I've continued onward, it's become more of a general
+library for building and analyzing model fits, especially for fitting time
+series.
+
+To understand how to use the library, I recommend visiting the documentation
+website
+
+	https://moofy.org/experimentalis
+
+ripe with examples and whatnot for how to use it. Again, it's intended to be
+more like a very formal function collection library, so this library will
+continuously grow with more functions as I need them. PRs are welcome.
+
+I will probably not end up releasing this library on Pip. I don't actually
+recommend this library for general use, it is much too hacky.
+
+Thanks,
+
+Moofy

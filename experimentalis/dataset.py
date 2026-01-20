@@ -20,3 +20,26 @@ class Dataset:
     dx: NDArray
     y:  NDArray
     dy: NDArray
+
+    def __init__(x: NDArray, y: NDArray, dx: NDArray = None, dy: NDArray = None):
+        self.x = np.asarray(x)
+        self.y = np.asarray(y)
+
+        if dx is None:
+            dx = np.zeros_like(x)
+            print('No dx set, setting all values to zero.')
+        if dy is None:
+            dy = np.zeros_like(y)
+            print('No dy set, setting all values to zero.')
+
+        def dim(array: NDArray):
+            return len(array.shape)
+            
+        def one_dim(arrays: list[NDArray]):
+            each = [ dim(a) == 1 for a in arrays ]
+            return reduce(lambda x, y: x and y, bool_list)
+            
+        if not one_dim([self.x, self.y, self.dx, self.dy]):
+            print(f'All parameters must be one-dimensional: x ~ {dim(x)}, y ~ {dim(y)}, dx ~ {dim(dx)}, dy ~ {dim(dy)}')
+        if self.x.size != self.y.size:
+            raise ValueError(f'x has length {self.x.size} and y has length {self.y.size}, both must be equal')
