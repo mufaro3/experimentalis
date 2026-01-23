@@ -6,43 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Data Management &#8212; experimentalis 0.1.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=34905f61" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=47202671" />
+    <link rel="stylesheet" type="text/css" href="../_static/haiku.css?v=fce32b03" />
     <script src="../_static/documentation_options.js?v=01f34227"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://moofy.org/experimentalis/api/data.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Model Fitting" href="fitting.html" />
-    <link rel="prev" title="Experimentalis documentation" href="../index.html" /> 
+    <link rel="prev" title="Experimentalis Documentation" href="../index.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="Related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="fitting.html" title="Model Fitting"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="../index.html" title="Experimentalis documentation"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">experimentalis 0.1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Data Management</a></li> 
-      </ul>
-    </div>  
+      <div class="header" role="banner"><h1 class="heading"><a href="../index.html">
+          <span>experimentalis 0.1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>Data Management</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        «&#160;&#160;<a href="../index.html">Experimentalis Documentation</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="fitting.html">Model Fitting</a>&#160;&#160;»
+        </p>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+      </div>
+      <div class="content" role="main">
+        
+        
   <section id="module-experimentalis.data">
 <span id="data-management"></span><h1>Data Management<a class="headerlink" href="#module-experimentalis.data" title="Link to this heading">¶</a></h1>
 <p>Data module for the Experimentalis library.</p>
@@ -60,12 +54,28 @@ throw an error.</p>
 <span class="sig-prename descclassname"><span class="pre">experimentalis.data.</span></span><span class="sig-name descname"><span class="pre">dataset_apply_selector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.data.dataset_apply_selector" title="Link to this definition">¶</a></dt>
 <dd><p>Applies a selector to all dimensions of the dataset simultaneously.
 These selectors can be filters, sorters, ranges, etc.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">experimentalis.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span>
+    <span class="n">x</span>  <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">],</span>
+    <span class="n">y</span>  <span class="o">=</span> <span class="p">[</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span> <span class="p">],</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="o">/</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span> <span class="p">],</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">5</span> <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">last_two_selector</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">is_odd_selector</span>   <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">y</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span>
+
+<span class="n">last_two_values</span> <span class="o">=</span> <span class="n">dataset_apply_selector</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">last_two_selector</span><span class="p">)</span>
+<span class="n">odd_values</span> <span class="o">=</span> <span class="n">dataset_apply_selector</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">is_odd_selector</span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>dataset</strong> (<a class="reference internal" href="#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset"><em>Dataset</em></a>) – Dataset to be transformed</p></li>
-<li><p><strong>selector</strong> (<em>slice</em><em> or </em><em>numpy.ndarray</em>) – A NumPy-compatible selector. This can be a slice,
-an index array, or a boolean mask.</p></li>
+<li><p><strong>selector</strong> (<em>slice</em><em> or </em><em>numpy.ndarray</em>) – A NumPy-compatible selector. This can be a slice, an index array, or a boolean mask.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -177,11 +187,12 @@ to remove.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A copy of the original dataset containing only the trimmed</p>
+<dd class="field-even"><p>A copy of the original dataset containing only the trimmed data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset">Dataset</a></p>
 </dd>
 </dl>
-<p>data.
-:rtype: Dataset</p>
 </dd></dl>
 
 <dl class="py class" id="module-experimentalis.dataset">
@@ -223,88 +234,19 @@ again due to lag or other issues).</p>
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="Main">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="../index.html">
-              <img class="logo" src="../_static/favicon-32x32.png" alt="Logo of experimentalis"/>
-            </a></p>
-  <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">Data Management</a><ul>
-<li><a class="reference internal" href="#experimentalis.data.calculate_uncertainty"><code class="docutils literal notranslate"><span class="pre">calculate_uncertainty()</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.data.dataset_apply_selector"><code class="docutils literal notranslate"><span class="pre">dataset_apply_selector()</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.data.isolate_noise_uncertainty"><code class="docutils literal notranslate"><span class="pre">isolate_noise_uncertainty()</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.data.pack_dataset"><code class="docutils literal notranslate"><span class="pre">pack_dataset()</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.data.shear_dataset"><code class="docutils literal notranslate"><span class="pre">shear_dataset()</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.data.sort_dataset"><code class="docutils literal notranslate"><span class="pre">sort_dataset()</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.data.trim_dataset"><code class="docutils literal notranslate"><span class="pre">trim_dataset()</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.dataset.Dataset"><code class="docutils literal notranslate"><span class="pre">Dataset</span></code></a><ul>
-<li><a class="reference internal" href="#experimentalis.dataset.Dataset.dx"><code class="docutils literal notranslate"><span class="pre">Dataset.dx</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.dataset.Dataset.dy"><code class="docutils literal notranslate"><span class="pre">Dataset.dy</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.dataset.Dataset.x"><code class="docutils literal notranslate"><span class="pre">Dataset.x</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.dataset.Dataset.y"><code class="docutils literal notranslate"><span class="pre">Dataset.y</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        «&#160;&#160;<a href="../index.html">Experimentalis Documentation</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="fitting.html">Model Fitting</a>&#160;&#160;»
+        </p>
 
-  </div>
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="../index.html"
-                          title="previous chapter">Experimentalis documentation</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="fitting.html"
-                          title="next chapter">Model Fitting</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/api/data.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<search id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</search>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="Related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="fitting.html" title="Model Fitting"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="../index.html" title="Experimentalis documentation"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">experimentalis 0.1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Data Management</a></li> 
-      </ul>
-    </div>
+
     <div class="footer" role="contentinfo">
     &#169; Copyright 2026, Mufaro J. Machaya.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.

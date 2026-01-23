@@ -10,6 +10,6 @@ def calculate_t_score(a, da, b, db):
 
     .. math::
 
-        t' = \frac{\abs{a - b}}{\sqrt{da^2 + db^2}}
+        t' = \\frac{|a - b|}{\\sqrt{(da)^2 + (db)^2}}
     """
     return np.abs(a - b) / np.sqrt(da ** 2 + db ** 2)

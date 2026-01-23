@@ -32,5 +32,6 @@ autodoc_typehints = "none"
 
 html_logo = '_static/logo/favicon-32x32.png'
 html_favicon = '_static/logo/favicon.ico'
-html_theme = 'sphinxdoc'
+html_theme = 'haiku'
 html_static_path = ['_static']
+html_baseurl = 'https://moofy.org/experimentalis/'

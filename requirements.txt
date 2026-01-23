@@ -7,3 +7,6 @@ pillow
 tabulate
 prettyprinter
 IPython
+jupyter
+ipykernel
+tensorflow-cpu

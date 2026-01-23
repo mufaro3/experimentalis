@@ -14,11 +14,28 @@ def dataset_apply_selector(dataset: Dataset, selector):
     Applies a selector to all dimensions of the dataset simultaneously.
     These selectors can be filters, sorters, ranges, etc.
 
+    .. code-block:: python
+
+        import numpy as np
+        from experimentalis.data import Dataset
+
+        data = Dataset(
+            x  = [ 1, 2, 3 ],
+            y  = [ 2, 4, 6 ],
+            dx = [ 1/7, 1/6, 1/6 ],
+            dy = [ 1/5, 1/9, 1/5 ]
+        )
+
+        last_two_selector = slice(1, 3)
+        is_odd_selector   = data.y % 2 != 0
+
+        last_two_values = dataset_apply_selector(data, last_two_selector)
+        odd_values = dataset_apply_selector(data, is_odd_selector)
+    
     :param dataset: Dataset to be transformed
     :type dataset: Dataset
 
-    :param selector: A NumPy-compatible selector. This can be a slice,
-        an index array, or a boolean mask.
+    :param selector: A NumPy-compatible selector. This can be a slice, an index array, or a boolean mask.
     :type selector: slice or numpy.ndarray
 
     :returns: A new dataset containing only the selected entries.
@@ -76,8 +93,7 @@ def trim_dataset(dataset: Dataset,
     :param trim_range: The trimming range
     :type trim_range: (int, int)
 
-    :returns: A copy of the original dataset containing only the trimmed
-    data.
+    :returns: A copy of the original dataset containing only the trimmed data.
     :rtype: Dataset
     """
     if trim_range is None:

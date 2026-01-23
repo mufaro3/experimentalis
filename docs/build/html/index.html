@@ -5,44 +5,72 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Experimentalis documentation &#8212; experimentalis 0.1.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d75fae25" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinxdoc.css?v=34905f61" />
+    <title>Experimentalis Documentation &#8212; experimentalis 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=47202671" />
+    <link rel="stylesheet" type="text/css" href="_static/haiku.css?v=fce32b03" />
     <script src="_static/documentation_options.js?v=01f34227"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="canonical" href="https://moofy.org/experimentalis/index.html" />
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Data Management" href="api/data.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="Related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="api/data.html" title="Data Management"
-             accesskey="N">next</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">experimentalis 0.1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Experimentalis documentation</a></li> 
-      </ul>
-    </div>  
+      <div class="header" role="banner"><h1 class="heading"><a href="#">
+          <span>experimentalis 0.1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>Experimentalis Documentation</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        <a class="uplink" href="#">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="api/data.html">Data Management</a>&#160;&#160;»
+        </p>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+      </div>
+      <div class="content" role="main">
+        
+        
   <section id="experimentalis-documentation">
-<h1>Experimentalis documentation<a class="headerlink" href="#experimentalis-documentation" title="Link to this heading">¶</a></h1>
+<h1>Experimentalis Documentation<a class="headerlink" href="#experimentalis-documentation" title="Link to this heading">¶</a></h1>
 <p>The Experimentalis (“Experimental Analysis”) library is a formalized library for performing basic modeling and measurement analysis for physics experiments. It has to constantly change to match whatever I need each week, so this is not recommended to be used as an actual library. (It’s really the final evolution of a disjointed series of laboratory functions, cleaned up and given some proper tests, examples, and documentation.)</p>
+<section id="installation-setup">
+<h2>Installation/Setup<a class="headerlink" href="#installation-setup" title="Link to this heading">¶</a></h2>
+<p>To install the library, first clone the repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mufaro3</span><span class="o">/</span><span class="n">experimentalis</span>
+</pre></div>
+</div>
+<p>then install the repository, ideally using a virtual environment (due to the instability of the library):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="n">experimentalis</span>
+</pre></div>
+</div>
+<p>then, you can just start using the library as normal! If you’d like to develop for the library as well, development setup isn’t particularly complicated either. First, <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the project root:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">experimentalis</span>
+</pre></div>
+</div>
+<p>then build a development virtual environment with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">setup</span>
+</pre></div>
+</div>
+<p>Next, build a Jupyter kernel (ideally once) with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">kernel</span>
+</pre></div>
+</div>
+<p>Then, each time you work on the project, simply:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="nb">all</span>
+</pre></div>
+</div>
+<p>to rebuild the documentation and rerun all of the tests on each edit, or for more advanced options use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span>
+</pre></div>
+</div>
+<p>to see the full list of build options.</p>
+</section>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/data.html">Data Management</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/data.html#experimentalis.data.calculate_uncertainty"><code class="docutils literal notranslate"><span class="pre">calculate_uncertainty()</span></code></a></li>
@@ -93,62 +121,31 @@
 <li class="toctree-l2"><a class="reference internal" href="api/extension/circuits.html#experimentalis.extension.circuits.RCResponseModel"><code class="docutils literal notranslate"><span class="pre">RCResponseModel</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="api/extension/sde.html">Stochastic Differential Modeling Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/extension/sde.html#experimentalis.extension.sde.DriftNet"><code class="docutils literal notranslate"><span class="pre">DriftNet</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/extension/sde.html#experimentalis.extension.sde.GBM"><code class="docutils literal notranslate"><span class="pre">GBM</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/extension/sde.html#experimentalis.extension.sde.IntegratedItoSDEModel"><code class="docutils literal notranslate"><span class="pre">IntegratedItoSDEModel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/extension/sde.html#experimentalis.extension.sde.LearnedDriftGBM"><code class="docutils literal notranslate"><span class="pre">LearnedDriftGBM</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/extension/sde.html#experimentalis.extension.sde.gbm_function"><code class="docutils literal notranslate"><span class="pre">gbm_function()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
+</section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="Main">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="#">
-              <img class="logo" src="_static/favicon-32x32.png" alt="Logo of experimentalis"/>
-            </a></p>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="api/data.html"
-                          title="next chapter">Data Management</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/index.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<search id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</search>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        <a class="uplink" href="#">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="api/data.html">Data Management</a>&#160;&#160;»
+        </p>
+
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="Related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="api/data.html" title="Data Management"
-             >next</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">experimentalis 0.1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Experimentalis documentation</a></li> 
-      </ul>
-    </div>
+
     <div class="footer" role="contentinfo">
     &#169; Copyright 2026, Mufaro J. Machaya.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.

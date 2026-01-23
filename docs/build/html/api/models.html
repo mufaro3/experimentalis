@@ -6,43 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Modelling &#8212; experimentalis 0.1.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=34905f61" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=47202671" />
+    <link rel="stylesheet" type="text/css" href="../_static/haiku.css?v=fce32b03" />
     <script src="../_static/documentation_options.js?v=01f34227"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://moofy.org/experimentalis/api/models.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Plotting and Visual Management" href="plotting.html" />
     <link rel="prev" title="Model Fitting" href="fitting.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="Related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="plotting.html" title="Plotting and Visual Management"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="fitting.html" title="Model Fitting"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">experimentalis 0.1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Modelling</a></li> 
-      </ul>
-    </div>  
+      <div class="header" role="banner"><h1 class="heading"><a href="../index.html">
+          <span>experimentalis 0.1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>Modelling</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        «&#160;&#160;<a href="fitting.html">Model Fitting</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="plotting.html">Plotting and Visual Management</a>&#160;&#160;»
+        </p>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+      </div>
+      <div class="content" role="main">
+        
+        
   <section id="module-experimentalis.models">
 <span id="modelling"></span><h1>Modelling<a class="headerlink" href="#module-experimentalis.models" title="Link to this heading">¶</a></h1>
 <p>The basic modeling module for the Experimentalis library. This module
@@ -337,99 +331,19 @@ lightly-damped harmonic oscillator (or other sinusoid).</p>
 </section>
 
 
-            <div class="clearer"></div>
-          </div>
-        </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="Main">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="../index.html">
-              <img class="logo" src="../_static/favicon-32x32.png" alt="Logo of experimentalis"/>
-            </a></p>
-  <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">Modelling</a><ul>
-<li><a class="reference internal" href="#experimentalis.models.CustomFitModel"><code class="docutils literal notranslate"><span class="pre">CustomFitModel</span></code></a><ul>
-<li><a class="reference internal" href="#experimentalis.models.CustomFitModel.initial_params"><code class="docutils literal notranslate"><span class="pre">CustomFitModel.initial_params</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#experimentalis.models.ExponentialOffsetModel"><code class="docutils literal notranslate"><span class="pre">ExponentialOffsetModel</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.models.LinearModel"><code class="docutils literal notranslate"><span class="pre">LinearModel</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.models.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul>
-<li><a class="reference internal" href="#experimentalis.models.Model.bounds"><code class="docutils literal notranslate"><span class="pre">Model.bounds()</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.models.Model.fit_function"><code class="docutils literal notranslate"><span class="pre">Model.fit_function</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.models.Model.has_bounds"><code class="docutils literal notranslate"><span class="pre">Model.has_bounds()</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.models.Model.labels"><code class="docutils literal notranslate"><span class="pre">Model.labels()</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.models.Model.param_bounds"><code class="docutils literal notranslate"><span class="pre">Model.param_bounds</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.models.Model.param_names"><code class="docutils literal notranslate"><span class="pre">Model.param_names</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.models.Model.param_uncerts"><code class="docutils literal notranslate"><span class="pre">Model.param_uncerts</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.models.Model.param_values"><code class="docutils literal notranslate"><span class="pre">Model.param_values</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.models.Model.tabulate"><code class="docutils literal notranslate"><span class="pre">Model.tabulate()</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.models.Model.uncertainties"><code class="docutils literal notranslate"><span class="pre">Model.uncertainties()</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.models.Model.update_fit_results"><code class="docutils literal notranslate"><span class="pre">Model.update_fit_results()</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.models.Model.values"><code class="docutils literal notranslate"><span class="pre">Model.values()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#experimentalis.models.OffsetLinearModel"><code class="docutils literal notranslate"><span class="pre">OffsetLinearModel</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.models.OffsetSineModel"><code class="docutils literal notranslate"><span class="pre">OffsetSineModel</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.models.RingdownModel"><code class="docutils literal notranslate"><span class="pre">RingdownModel</span></code></a></li>
-<li><a class="reference internal" href="#experimentalis.models.SineModel"><code class="docutils literal notranslate"><span class="pre">SineModel</span></code></a></li>
-</ul>
-</li>
-</ul>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        «&#160;&#160;<a href="fitting.html">Model Fitting</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="plotting.html">Plotting and Visual Management</a>&#160;&#160;»
+        </p>
 
-  </div>
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="fitting.html"
-                          title="previous chapter">Model Fitting</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="plotting.html"
-                          title="next chapter">Plotting and Visual Management</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/api/models.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<search id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</search>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="Related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="plotting.html" title="Plotting and Visual Management"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="fitting.html" title="Model Fitting"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">experimentalis 0.1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Modelling</a></li> 
-      </ul>
-    </div>
+
     <div class="footer" role="contentinfo">
     &#169; Copyright 2026, Mufaro J. Machaya.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
