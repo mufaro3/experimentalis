@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Experimentalis Documentation &#8212; experimentalis 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=47202671" />
+    <link rel="stylesheet" type="text/css" href="_static/haiku.css?v=fce32b03" />
+    <script src="_static/documentation_options.js?v=01f34227"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data Management" href="api/data.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="#">
+          <span>experimentalis 0.1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>Experimentalis Documentation</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        <a class="uplink" href="#">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="api/data.html">Data Management</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <section id="experimentalis-documentation">
+<h1>Experimentalis Documentation<a class="headerlink" href="#experimentalis-documentation" title="Link to this heading">¶</a></h1>
+<p>The Experimentalis (“Experimental Analysis”) library is a formalized library for performing basic modeling and measurement analysis for physics experiments. It has to constantly change to match whatever I need each week, so this is not recommended to be used as an actual library. (It’s really the final evolution of a disjointed series of laboratory functions, cleaned up and given some proper tests, examples, and documentation.)</p>
+<section id="installation-setup">
+<h2>Installation/Setup<a class="headerlink" href="#installation-setup" title="Link to this heading">¶</a></h2>
+<p>To install the library, first clone the repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mufaro3</span><span class="o">/</span><span class="n">experimentalis</span>
+</pre></div>
+</div>
+<p>then install the repository, ideally using a virtual environment (due to the instability of the library):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="n">experimentalis</span>
+</pre></div>
+</div>
+<p>then, you can just start using the library as normal! If you’d like to develop for the library as well, development setup isn’t particularly complicated either. First, <code class="docutils literal notranslate"><span class="pre">cd</span></code> into the project root:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">experimentalis</span>
+</pre></div>
+</div>
+<p>then build a development virtual environment with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">setup</span>
+</pre></div>
+</div>
+<p>Next, build a Jupyter kernel (ideally once) with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">kernel</span>
+</pre></div>
+</div>
+<p>Then, each time you work on the project, simply:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="nb">all</span>
+</pre></div>
+</div>
+<p>to rebuild the documentation and rerun all of the tests on each edit, or for more advanced options use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span>
+</pre></div>
+</div>
+<p>to see the full list of build options.</p>
+</section>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/data.html">Data Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/data.html#experimentalis.data.calculate_uncertainty"><code class="docutils literal notranslate"><span class="pre">calculate_uncertainty()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/data.html#experimentalis.data.dataset_apply_selector"><code class="docutils literal notranslate"><span class="pre">dataset_apply_selector()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/data.html#experimentalis.data.isolate_noise_uncertainty"><code class="docutils literal notranslate"><span class="pre">isolate_noise_uncertainty()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/data.html#experimentalis.data.pack_dataset"><code class="docutils literal notranslate"><span class="pre">pack_dataset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/data.html#experimentalis.data.shear_dataset"><code class="docutils literal notranslate"><span class="pre">shear_dataset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/data.html#experimentalis.data.sort_dataset"><code class="docutils literal notranslate"><span class="pre">sort_dataset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/data.html#experimentalis.data.trim_dataset"><code class="docutils literal notranslate"><span class="pre">trim_dataset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/data.html#experimentalis.dataset.Dataset"><code class="docutils literal notranslate"><span class="pre">Dataset</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/fitting.html">Model Fitting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/fitting.html#experimentalis.fitting.FitModelResult"><code class="docutils literal notranslate"><span class="pre">FitModelResult</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/fitting.html#experimentalis.fitting.autofit"><code class="docutils literal notranslate"><span class="pre">autofit()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/fitting.html#experimentalis.fitting.calculate_chi_squared"><code class="docutils literal notranslate"><span class="pre">calculate_chi_squared()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/fitting.html#experimentalis.fitting.print_results"><code class="docutils literal notranslate"><span class="pre">print_results()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/models.html">Modelling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/models.html#experimentalis.models.CustomFitModel"><code class="docutils literal notranslate"><span class="pre">CustomFitModel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/models.html#experimentalis.models.ExponentialOffsetModel"><code class="docutils literal notranslate"><span class="pre">ExponentialOffsetModel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/models.html#experimentalis.models.LinearModel"><code class="docutils literal notranslate"><span class="pre">LinearModel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/models.html#experimentalis.models.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/models.html#experimentalis.models.OffsetLinearModel"><code class="docutils literal notranslate"><span class="pre">OffsetLinearModel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/models.html#experimentalis.models.OffsetSineModel"><code class="docutils literal notranslate"><span class="pre">OffsetSineModel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/models.html#experimentalis.models.RingdownModel"><code class="docutils literal notranslate"><span class="pre">RingdownModel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/models.html#experimentalis.models.SineModel"><code class="docutils literal notranslate"><span class="pre">SineModel</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/plotting.html">Plotting and Visual Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/plotting.html#experimentalis.plotting.GraphingOptions"><code class="docutils literal notranslate"><span class="pre">GraphingOptions</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/utils.html">Utility Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/utils.html#experimentalis.utils.calculate_t_score"><code class="docutils literal notranslate"><span class="pre">calculate_t_score()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/extension/oscilloscope.html">Oscilloscopes Extension Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/extension/oscilloscope.html#experimentalis.extension.oscilloscope.load_channel"><code class="docutils literal notranslate"><span class="pre">load_channel()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/extension/oscilloscope.html#experimentalis.extension.oscilloscope.load_raw_oscilloscope_data"><code class="docutils literal notranslate"><span class="pre">load_raw_oscilloscope_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/extension/oscilloscope.html#experimentalis.extension.oscilloscope.plot_channel_lissajous"><code class="docutils literal notranslate"><span class="pre">plot_channel_lissajous()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/extension/oscilloscope.html#experimentalis.extension.oscilloscope.plot_channels"><code class="docutils literal notranslate"><span class="pre">plot_channels()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/extension/circuits.html">Circuits Extension Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/extension/circuits.html#experimentalis.extension.circuits.LRCResponseModel"><code class="docutils literal notranslate"><span class="pre">LRCResponseModel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/extension/circuits.html#experimentalis.extension.circuits.RCResponseModel"><code class="docutils literal notranslate"><span class="pre">RCResponseModel</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/extension/sde.html">Stochastic Differential Modeling Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/extension/sde.html#experimentalis.extension.sde.GBM"><code class="docutils literal notranslate"><span class="pre">GBM</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/extension/sde.html#experimentalis.extension.sde.IntegratedItoSDEModel"><code class="docutils literal notranslate"><span class="pre">IntegratedItoSDEModel</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        <a class="uplink" href="#">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="api/data.html">Data Management</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, Mufaro J. Machaya.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    </div>
+  </body>
+</html>

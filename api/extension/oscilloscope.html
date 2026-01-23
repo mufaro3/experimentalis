@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Oscilloscopes Extension Module &#8212; experimentalis 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=47202671" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css?v=fce32b03" />
+    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Circuits Extension Module" href="circuits.html" />
+    <link rel="prev" title="Utility Functions" href="../utils.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>experimentalis 0.1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>Oscilloscopes Extension Module</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        «&#160;&#160;<a href="../utils.html">Utility Functions</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="circuits.html">Circuits Extension Module</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <section id="module-experimentalis.extension.oscilloscope">
+<span id="oscilloscopes-extension-module"></span><h1>Oscilloscopes Extension Module<a class="headerlink" href="#module-experimentalis.extension.oscilloscope" title="Link to this heading">¶</a></h1>
+<p>This extension module is used for handling Oscilloscopes (and their data).</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="experimentalis.extension.oscilloscope.load_channel">
+<span class="sig-prename descclassname"><span class="pre">experimentalis.extension.oscilloscope.</span></span><span class="sig-name descname"><span class="pre">load_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.extension.oscilloscope.load_channel" title="Link to this definition">¶</a></dt>
+<dd><p>Loads the data of a singular oscilloscope channel from a CSV file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – The filepath of the dataset CSV file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dataset of the loaded channel data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../data.html#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset">Dataset</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="experimentalis.extension.oscilloscope.load_raw_oscilloscope_data">
+<span class="sig-prename descclassname"><span class="pre">experimentalis.extension.oscilloscope.</span></span><span class="sig-name descname"><span class="pre">load_raw_oscilloscope_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.extension.oscilloscope.load_raw_oscilloscope_data" title="Link to this definition">¶</a></dt>
+<dd><p>Loads raw oscilloscope data to a dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – The filepath of the raw oscilloscope data in CSV format.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dataset containing the raw <cite>x</cite> and <cite>y</cite> values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../data.html#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset">Dataset</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="experimentalis.extension.oscilloscope.plot_channel_lissajous">
+<span class="sig-prename descclassname"><span class="pre">experimentalis.extension.oscilloscope.</span></span><span class="sig-name descname"><span class="pre">plot_channel_lissajous</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ch1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ch2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graphing_options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.extension.oscilloscope.plot_channel_lissajous" title="Link to this definition">¶</a></dt>
+<dd><p>Produces a <a class="reference external" href="https://en.wikipedia.org/wiki/Lissajous_curve">Lissajous curve</a> for the two channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ch1</strong> (<a class="reference internal" href="../data.html#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset"><em>Dataset</em></a>) – The first channel’s data.</p></li>
+<li><p><strong>ch2</strong> (<a class="reference internal" href="../data.html#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset"><em>Dataset</em></a>) – The second channel’s data.</p></li>
+<li><p><strong>graphing_options</strong> (<a class="reference internal" href="../plotting.html#experimentalis.plotting.GraphingOptions" title="experimentalis.plotting.GraphingOptions"><em>GraphingOptions</em></a>) – The graphing options for the plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="experimentalis.extension.oscilloscope.plot_channels">
+<span class="sig-prename descclassname"><span class="pre">experimentalis.extension.oscilloscope.</span></span><span class="sig-name descname"><span class="pre">plot_channels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ch1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ch2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graphing_options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.extension.oscilloscope.plot_channels" title="Link to this definition">¶</a></dt>
+<dd><p>Plots two simultaneous Oscilloscope channels for analysis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ch1</strong> (<a class="reference internal" href="../data.html#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset"><em>Dataset</em></a>) – The first channel’s data.</p></li>
+<li><p><strong>ch2</strong> (<a class="reference internal" href="../data.html#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset"><em>Dataset</em></a>) – The second channel’s data.</p></li>
+<li><p><strong>graphing_options</strong> (<a class="reference internal" href="../plotting.html#experimentalis.plotting.GraphingOptions" title="experimentalis.plotting.GraphingOptions"><em>GraphingOptions</em></a>) – The graphing options for the plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        «&#160;&#160;<a href="../utils.html">Utility Functions</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="circuits.html">Circuits Extension Module</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, Mufaro J. Machaya.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    </div>
+  </body>
+</html>

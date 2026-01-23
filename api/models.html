@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Modelling &#8212; experimentalis 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=47202671" />
+    <link rel="stylesheet" type="text/css" href="../_static/haiku.css?v=fce32b03" />
+    <script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Plotting and Visual Management" href="plotting.html" />
+    <link rel="prev" title="Model Fitting" href="fitting.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../index.html">
+          <span>experimentalis 0.1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>Modelling</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        «&#160;&#160;<a href="fitting.html">Model Fitting</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="plotting.html">Plotting and Visual Management</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <section id="module-experimentalis.models">
+<span id="modelling"></span><h1>Modelling<a class="headerlink" href="#module-experimentalis.models" title="Link to this heading">¶</a></h1>
+<p>The basic modeling module for the Experimentalis library. This module
+provides some simple generic usecase models and the base model class,
+like linear, sinusoid, exponential fits, etc. Additional, usecase-specific
+models can be found under <cite>experimentalis.modules</cite>, such as the RC and LRC
+response curve models.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="experimentalis.models.CustomFitModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">experimentalis.models.</span></span><span class="sig-name descname"><span class="pre">CustomFitModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fit_function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.models.CustomFitModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#experimentalis.models.Model" title="experimentalis.models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>A generic model class implementation for performing custom fits by
+manually specifying values.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">experimentalis.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">CustomFitModel</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">decay_model</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span> <span class="o">/</span> <span class="n">tau</span><span class="p">)</span> <span class="o">+</span> <span class="n">C</span>
+
+<span class="n">initial_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="s2">&quot;tau&quot;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span>
+    <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">0.1</span>
+<span class="p">}</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">CustomFitModel</span><span class="p">(</span>
+    <span class="n">fit_function</span><span class="o">=</span><span class="n">decay_model</span><span class="p">,</span>
+    <span class="n">initial_params</span><span class="o">=</span><span class="n">initial_params</span>
+<span class="p">)</span>
+
+<span class="c1"># Evaluate the model at some points</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit_function</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">param_values</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fit_function</strong> (<em>Callable</em>) – The mathematical function for this model.</p></li>
+<li><p><strong>initial_params</strong> (<em>dict</em>) – The parameter names and starting values for this function.</p></li>
+<li><p><strong>param_bounds</strong> (<em>Optional</em><em>[</em><em>Tuple</em><em>[</em><em>NDArray</em><em>, </em><em>NDArray</em><em>]</em><em>]</em>) – Bounds for the parameter values to be used during model optimization (optional).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.models.CustomFitModel.initial_params">
+<span class="sig-name descname"><span class="pre">initial_params</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#experimentalis.models.CustomFitModel.initial_params" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="experimentalis.models.ExponentialOffsetModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">experimentalis.models.</span></span><span class="sig-name descname"><span class="pre">ExponentialOffsetModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_constant</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.models.ExponentialOffsetModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#experimentalis.models.Model" title="experimentalis.models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>Exponential decay model with a vertical offset.</p>
+<div class="math notranslate nohighlight">
+\[f(x) = A \exp(-x/        au) + C\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amplitude</strong> (<em>float</em>) – Amplitude <span class="math notranslate nohighlight">\(A\)</span></p></li>
+<li><p><strong>time_constant</strong> (<em>float</em>) – Time Constant <span class="math notranslate nohighlight">\(\tau\)</span></p></li>
+<li><p><strong>offset</strong> (<em>float</em>) – Vertical Offset <span class="math notranslate nohighlight">\(C\)</span></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="experimentalis.models.LinearModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">experimentalis.models.</span></span><span class="sig-name descname"><span class="pre">LinearModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slope</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.models.LinearModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#experimentalis.models.Model" title="experimentalis.models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>A one-parameter linear fit.</p>
+<div class="math notranslate nohighlight">
+\[f(x) = mx\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>slope</strong> (<em>float</em>) – Slope <span class="math notranslate nohighlight">\(m\)</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="experimentalis.models.Model">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">experimentalis.models.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fit_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_uncerts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.models.Model" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for a fitting model, consisting of the mathematical function
+to use for fitting (<code class="docutils literal notranslate"><span class="pre">fit_function</span></code>), and information about each of the
+model’s parameters, like the names (<code class="docutils literal notranslate"><span class="pre">param_names</span></code>), values
+(<code class="docutils literal notranslate"><span class="pre">param_values</span></code>), uncertainties (<code class="docutils literal notranslate"><span class="pre">param_uncerts</span></code>), and the bounds
+to use when fitting the model to some data (<code class="docutils literal notranslate"><span class="pre">param_bounds</span></code>).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="experimentalis.models.Model.bounds">
+<span class="sig-name descname"><span class="pre">bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.models.Model.bounds" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The bounds of the model, if it has any.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional[Tuple[NDArray, NDArray]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.models.Model.fit_function">
+<span class="sig-name descname"><span class="pre">fit_function</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#experimentalis.models.Model.fit_function" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="experimentalis.models.Model.has_bounds">
+<span class="sig-name descname"><span class="pre">has_bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.models.Model.has_bounds" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether or not this model has any parameters bounds.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="experimentalis.models.Model.labels">
+<span class="sig-name descname"><span class="pre">labels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.models.Model.labels" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Parameter names.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.models.Model.param_bounds">
+<span class="sig-name descname"><span class="pre">param_bounds</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#experimentalis.models.Model.param_bounds" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.models.Model.param_names">
+<span class="sig-name descname"><span class="pre">param_names</span></span><a class="headerlink" href="#experimentalis.models.Model.param_names" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.models.Model.param_uncerts">
+<span class="sig-name descname"><span class="pre">param_uncerts</span></span><a class="headerlink" href="#experimentalis.models.Model.param_uncerts" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.models.Model.param_values">
+<span class="sig-name descname"><span class="pre">param_values</span></span><a class="headerlink" href="#experimentalis.models.Model.param_values" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="experimentalis.models.Model.tabulate">
+<span class="sig-name descname"><span class="pre">tabulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.models.Model.tabulate" title="Link to this definition">¶</a></dt>
+<dd><p>Tabulates the results as a pandas dataframe to be easily displayed
+as a LaTeX table in a Jupyter cell.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>units</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Optional units to include in the table.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A table representation of the model’s parameters.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="experimentalis.models.Model.uncertainties">
+<span class="sig-name descname"><span class="pre">uncertainties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.models.Model.uncertainties" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Parameter uncertainties.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="experimentalis.models.Model.update_fit_results">
+<span class="sig-name descname"><span class="pre">update_fit_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fit_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_errors</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.models.Model.update_fit_results" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the model’s parameters to a fresh set of values and
+uncertainties, post-modelling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fit_params</strong> (<em>NDArray</em>) – New parameters for the model.</p></li>
+<li><p><strong>fit_errors</strong> (<em>NDArray</em>) – New uncertainties for the model.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="experimentalis.models.Model.values">
+<span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.models.Model.values" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Parameter values.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="experimentalis.models.OffsetLinearModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">experimentalis.models.</span></span><span class="sig-name descname"><span class="pre">OffsetLinearModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slope</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intercept</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.models.OffsetLinearModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#experimentalis.models.Model" title="experimentalis.models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>A two-parameter linear fit (slope and intercept).</p>
+<div class="math notranslate nohighlight">
+\[f(x) = mx + b\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slope</strong> (<em>float</em>) – Slope <span class="math notranslate nohighlight">\(m\)</span></p></li>
+<li><p><strong>intercept</strong> (<em>float</em>) – Intercept <span class="math notranslate nohighlight">\(b\)</span></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="experimentalis.models.OffsetSineModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">experimentalis.models.</span></span><span class="sig-name descname"><span class="pre">OffsetSineModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.models.OffsetSineModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#experimentalis.models.Model" title="experimentalis.models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>Sinusoid model with a vertical offset.</p>
+<div class="math notranslate nohighlight">
+\[f(x) = A \sin (2 \pi f x + \phi) + C\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amplitude</strong> (<em>float</em>) – Amplitude <span class="math notranslate nohighlight">\(A\)</span></p></li>
+<li><p><strong>frequency</strong> (<em>float</em>) – Frequency <span class="math notranslate nohighlight">\(f\)</span></p></li>
+<li><p><strong>phase</strong> (<em>float</em>) – Phase <span class="math notranslate nohighlight">\(\phi\)</span></p></li>
+<li><p><strong>offset</strong> (<em>float</em>) – Offset <span class="math notranslate nohighlight">\(C\)</span></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="experimentalis.models.RingdownModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">experimentalis.models.</span></span><span class="sig-name descname"><span class="pre">RingdownModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_constant</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resonant_frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.models.RingdownModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#experimentalis.models.Model" title="experimentalis.models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>The <a class="reference external" href="https://openstax.org/books/university-physics-volume-1/pages/15-5-damped-oscillations#fs-id1167134928721">Ringdown Model</a>, used for fitting the time-domain response of a
+lightly-damped harmonic oscillator (or other sinusoid).</p>
+<div class="math notranslate nohighlight">
+\[f(t) = A \exp(-t/\tau) \cos(2 \pi f_0 t + \phi)\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amplitude</strong> (<em>float</em>) – Amplitude <span class="math notranslate nohighlight">\(A\)</span></p></li>
+<li><p><strong>time_constant</strong> (<em>float</em>) – Frequency <span class="math notranslate nohighlight">\(\tau\)</span></p></li>
+<li><p><strong>resonant_frequency</strong> (<em>float</em>) – Phase <span class="math notranslate nohighlight">\(f_0\)</span></p></li>
+<li><p><strong>phase</strong> (<em>float</em>) – Offset <span class="math notranslate nohighlight">\(\phi\)</span></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="experimentalis.models.SineModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">experimentalis.models.</span></span><span class="sig-name descname"><span class="pre">SineModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.models.SineModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#experimentalis.models.Model" title="experimentalis.models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>Default sinusoid model.</p>
+<div class="math notranslate nohighlight">
+\[f(x) = A \sin (2 \pi f x + \phi)\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amplitude</strong> (<em>float</em>) – Amplitude <span class="math notranslate nohighlight">\(A\)</span></p></li>
+<li><p><strong>frequency</strong> (<em>float</em>) – Frequency <span class="math notranslate nohighlight">\(f\)</span></p></li>
+<li><p><strong>phase</strong> (<em>float</em>) – Phase <span class="math notranslate nohighlight">\(\phi\)</span></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        «&#160;&#160;<a href="fitting.html">Model Fitting</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="plotting.html">Plotting and Visual Management</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, Mufaro J. Machaya.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    </div>
+  </body>
+</html>

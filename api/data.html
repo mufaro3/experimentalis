@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Data Management &#8212; experimentalis 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=47202671" />
+    <link rel="stylesheet" type="text/css" href="../_static/haiku.css?v=fce32b03" />
+    <script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Model Fitting" href="fitting.html" />
+    <link rel="prev" title="Experimentalis documentation" href="../index.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../index.html">
+          <span>experimentalis 0.1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>Data Management</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        «&#160;&#160;<a href="../index.html">Experimentalis documentation</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="fitting.html">Model Fitting</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <section id="module-experimentalis.data">
+<span id="data-management"></span><h1>Data Management<a class="headerlink" href="#module-experimentalis.data" title="Link to this heading">¶</a></h1>
+<p>Data module for the Experimentalis library.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="experimentalis.data.calculate_uncertainty">
+<span class="sig-prename descclassname"><span class="pre">experimentalis.data.</span></span><span class="sig-name descname"><span class="pre">calculate_uncertainty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graphing_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.data.calculate_uncertainty" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates the uncertainty <span class="math notranslate nohighlight">\(dy\)</span> in some measurement series.
+Implicitly assumes that the uncertainty is already unknown
+(<span class="math notranslate nohighlight">\(dy = \vec{0}\)</span>), so if <span class="math notranslate nohighlight">\(dy \neq \vec{0}\)</span>, then this will
+throw an error.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="experimentalis.data.dataset_apply_selector">
+<span class="sig-prename descclassname"><span class="pre">experimentalis.data.</span></span><span class="sig-name descname"><span class="pre">dataset_apply_selector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.data.dataset_apply_selector" title="Link to this definition">¶</a></dt>
+<dd><p>Applies a selector to all dimensions of the dataset simultaneously.
+These selectors can be filters, sorters, ranges, etc.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">experimentalis.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span>
+    <span class="n">x</span>  <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">],</span>
+    <span class="n">y</span>  <span class="o">=</span> <span class="p">[</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span> <span class="p">],</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="o">/</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span> <span class="p">],</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">5</span> <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">last_two_selector</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">is_odd_selector</span>   <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">y</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span>
+
+<span class="n">last_two_values</span> <span class="o">=</span> <span class="n">dataset_apply_selector</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">last_two_selector</span><span class="p">)</span>
+<span class="n">odd_values</span> <span class="o">=</span> <span class="n">dataset_apply_selector</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">is_odd_selector</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference internal" href="#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset"><em>Dataset</em></a>) – Dataset to be transformed</p></li>
+<li><p><strong>selector</strong> (<em>slice</em><em> or </em><em>numpy.ndarray</em>) – A NumPy-compatible selector. This can be a slice, an index array, or a boolean mask.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new dataset containing only the selected entries.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset">Dataset</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="experimentalis.data.isolate_noise_uncertainty">
+<span class="sig-prename descclassname"><span class="pre">experimentalis.data.</span></span><span class="sig-name descname"><span class="pre">isolate_noise_uncertainty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.data.isolate_noise_uncertainty" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates uncertainty due to noise in a tuple dataset, calculated as
+the standard deviation over a period where the data should be uniform.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The standard deviation over a uniform distribution.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="experimentalis.data.pack_dataset">
+<span class="sig-prename descclassname"><span class="pre">experimentalis.data.</span></span><span class="sig-name descname"><span class="pre">pack_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">packing_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.data.pack_dataset" title="Link to this definition">¶</a></dt>
+<dd><p>Downsamples a dataset by averaging consecutive blocks of data (packing).</p>
+<p>Returns a new Dataset where consecutive blocks of size p are averaged. The uncertainty in <span class="math notranslate nohighlight">\(y\)</span> is reduced accordingly. Implicitly ignores <span class="math notranslate nohighlight">\(dx\)</span>, so the function automatically throws a warning for any dataset where <span class="math notranslate nohighlight">\(dx \neq \vec{0}\)</span>.</p>
+<p>Mathematically, if our dataset <span class="math notranslate nohighlight">\(D\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\vec{D} = (x_i, y_i, dx_i, dy_i), \quad i = 1, 2, \dots, N\]</div>
+<p>and we have packing factor <span class="math notranslate nohighlight">\(p\)</span> (the block size), then for each
+packed point <span class="math notranslate nohighlight">\(D'_j\)</span> for <span class="math notranslate nohighlight">\(j \in 1, 2, \dots, N/p\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[D'_j = (x'_j, y'_j, 0, dy'_j)\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}x'_j = \frac{1}{p} \sum_{k=0}^{p-1} x_{(j-1)p + k},\\y'_j = \frac{1}{p} \sum_{k=0}^{p-1} y_{(j-1)p + k},\end{aligned}\end{align} \]</div>
+<p>and the y-uncertainty becomes</p>
+<div class="math notranslate nohighlight">
+\[dy'_j = \frac{dy}{\sqrt{p}}.\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>experimentalis.data.Dataset</em>) – The dataset to be packed.</p></li>
+<li><p><strong>packing_factor</strong> (<em>int</em>) – The “packing factor” or block size</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new dataset of the packed data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>experimentalis.data.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="experimentalis.data.shear_dataset">
+<span class="sig-prename descclassname"><span class="pre">experimentalis.data.</span></span><span class="sig-name descname"><span class="pre">shear_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.data.shear_dataset" title="Link to this definition">¶</a></dt>
+<dd><p>Autoamtically shears of the last <cite>n</cite> entries of the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>experimentalis.data.Dataset</em>) – Dataset to be sheared.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – The number of elements to remove.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new dataset with the last <cite>n</cite> elements removed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset">Dataset</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="experimentalis.data.sort_dataset">
+<span class="sig-prename descclassname"><span class="pre">experimentalis.data.</span></span><span class="sig-name descname"><span class="pre">sort_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.data.sort_dataset" title="Link to this definition">¶</a></dt>
+<dd><p>Automatically sorts a dataset along the x-axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dataset</strong> (<a class="reference internal" href="#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset"><em>Dataset</em></a>) – Dataset to be sorted</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new dataset of the original sorted along the x-axis.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset">Dataset</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="experimentalis.data.trim_dataset">
+<span class="sig-prename descclassname"><span class="pre">experimentalis.data.</span></span><span class="sig-name descname"><span class="pre">trim_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graphing_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.data.trim_dataset" title="Link to this definition">¶</a></dt>
+<dd><p>Trims a dataset (optionally with a visual helper) within a selected
+range. The trim range is the data designated to be kept, not the data
+to remove.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference internal" href="#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset"><em>Dataset</em></a>) – Dataset to be trimmed.</p></li>
+<li><p><strong>trim_range</strong> (<em>(</em><em>int</em><em>, </em><em>int</em><em>)</em>) – The trimming range</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A copy of the original dataset containing only the trimmed data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#experimentalis.dataset.Dataset" title="experimentalis.dataset.Dataset">Dataset</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class" id="module-experimentalis.dataset">
+<dt class="sig sig-object py" id="experimentalis.dataset.Dataset">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">experimentalis.dataset.</span></span><span class="sig-name descname"><span class="pre">Dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.dataset.Dataset" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Datasets are tracker objects for two-dimensional coupled measurement,
+i.e., some independent measurement <cite>x</cite> and its uncertainty <cite>dx</cite> alongside
+a dependent measurement <cite>y</cite> on <cite>x</cite> and its uncertainty <cite>dy</cite>.</p>
+<p>For example, a Dataset can typically be used for any one-dimensional
+time series, like stock prices, temperature, or precipitation chances.
+For the case of stock prices, <cite>x</cite> would be the time, <cite>dx</cite> would be the
+uncertainty in each clock reading (so, say, the instrumental lag between
+a measurement and the intended time delta), <cite>y</cite> would be the stock
+prices, and <cite>dy</cite> would be the uncertainty in the stock reading (once
+again due to lag or other issues).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.dataset.Dataset.dx">
+<span class="sig-name descname"><span class="pre">dx</span></span><a class="headerlink" href="#experimentalis.dataset.Dataset.dx" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.dataset.Dataset.dy">
+<span class="sig-name descname"><span class="pre">dy</span></span><a class="headerlink" href="#experimentalis.dataset.Dataset.dy" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.dataset.Dataset.x">
+<span class="sig-name descname"><span class="pre">x</span></span><a class="headerlink" href="#experimentalis.dataset.Dataset.x" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="experimentalis.dataset.Dataset.y">
+<span class="sig-name descname"><span class="pre">y</span></span><a class="headerlink" href="#experimentalis.dataset.Dataset.y" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        «&#160;&#160;<a href="../index.html">Experimentalis documentation</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="fitting.html">Model Fitting</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, Mufaro J. Machaya.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Stochastic Differential Modeling Module &#8212; experimentalis 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=47202671" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css?v=fce32b03" />
+    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Circuits Extension Module" href="circuits.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>experimentalis 0.1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>Stochastic Differential Modeling Module</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        «&#160;&#160;<a href="circuits.html">Circuits Extension Module</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <section id="module-experimentalis.extension.sde">
+<span id="stochastic-differential-modeling-module"></span><h1>Stochastic Differential Modeling Module<a class="headerlink" href="#module-experimentalis.extension.sde" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="experimentalis.extension.sde.GBM">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">experimentalis.extension.sde.</span></span><span class="sig-name descname"><span class="pre">GBM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drift</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volatility</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drift_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volatility_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1e-06,</span> <span class="pre">2.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.extension.sde.GBM" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#experimentalis.extension.sde.IntegratedItoSDEModel" title="experimentalis.extension.sde.IntegratedItoSDEModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntegratedItoSDEModel</span></code></a></p>
+<p>This is a very generic stochastic differential equation (SDE) model in 1D using
+<a class="reference external" href="https://en.wikipedia.org/wiki/Geometric_Brownian_motion">Geometric Brownian Motion</a>.
+(GBM) in integrated form.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># some time-series dataset with inherent randomness</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="o">...</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">GBM</span><span class="p">(</span>
+    <span class="n">initial_value</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">drift</span> <span class="o">=</span> <span class="mf">1.01e-3</span><span class="p">,</span>             <span class="c1"># very small drift, i.e., predictibility</span>
+    <span class="n">drift_bounds</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">),</span>      <span class="c1"># depending on data, drift is usually small</span>
+    <span class="n">volatility</span> <span class="o">=</span> <span class="mf">2e-2</span><span class="p">,</span>           <span class="c1"># higher volatility</span>
+    <span class="n">volatility_bounds</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>    <span class="c1"># volatility can be higher, but this makes sense for the data</span>
+<span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">autofit</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">graphing_options</span><span class="o">=</span><span class="n">g_opts</span><span class="p">)</span>
+<span class="o">...</span>    
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="experimentalis.extension.sde.GBM.gbm">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">gbm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drift</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volatility</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.extension.sde.GBM.gbm" title="Link to this definition">¶</a></dt>
+<dd><p>Implementation of the GBM equation</p>
+<div class="math notranslate nohighlight">
+\[S_t = S_0 \exp\left\{\sigma B_t + \left( \mu - \frac{\sigma^2}{2} \right) t\right\}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<em>NDArray</em>) – The time values to evaluate on</p></li>
+<li><p><strong>initial_value</strong> (<em>float</em>) – <span class="math notranslate nohighlight">\(S_0\)</span> The initial value</p></li>
+<li><p><strong>drift</strong> – <span class="math notranslate nohighlight">\(\mu\)</span> The percentage drift (predictability).</p></li>
+<li><p><strong>volatility</strong> (<em>float</em>) – <span class="math notranslate nohighlight">\(\sigma\)</span> The percentage volatility of the dataset.</p></li>
+<li><p><strong>drift_bounds</strong> (<em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>] or </em><em>None</em>) – Optional bounds on the geometric drift.</p></li>
+<li><p><strong>volatility_bounds</strong> (<em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>] or </em><em>None</em>) – Optional bounds on the volatility.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="experimentalis.extension.sde.IntegratedItoSDEModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">experimentalis.extension.sde.</span></span><span class="sig-name descname"><span class="pre">IntegratedItoSDEModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">integrated_function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.extension.sde.IntegratedItoSDEModel" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../models.html#experimentalis.models.Model" title="experimentalis.models.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>This is a base class for implementing various superclass models in the family of stochastic PDEs,
+as solved via <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4's_lemma">Ito’s lemma</a>, following the
+equation</p>
+<div class="math notranslate nohighlight">
+\[dS_t = \mu(S_t, t) dt + \sigma(S_t, t) dB_t\]</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="experimentalis.extension.sde.IntegratedItoSDEModel.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#experimentalis.extension.sde.IntegratedItoSDEModel.evaluate" title="Link to this definition">¶</a></dt>
+<dd><p>Evaluates the SDE integrated solution with the given parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<em>NDArray</em>) – Array of times to evaluate on</p></li>
+<li><p><strong>params</strong> (<em>float</em><em> or </em><em>NDArray</em>) – Parameter values</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        «&#160;&#160;<a href="circuits.html">Circuits Extension Module</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, Mufaro J. Machaya.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    </div>
+  </body>
+</html>
