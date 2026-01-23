@@ -4,11 +4,13 @@ previously defined fit models to estimate model parameters.
 """
 
 import numpy as np
+from matplotlib import pyplot as plt
 from numpy.typing import NDArray
 from scipy.optimize import curve_fit
 from dataclasses import dataclass
 from PIL import Image
 from typing import Callable
+from IPython.display import Markdown
 
 from .plotting import GraphingOptions
 from .models import Model
@@ -93,9 +95,9 @@ def calculate_chi_squared(model: Model, dataset: Dataset):
 
     :returns: The goodness-of-fit :math:`\\chi^2`.
     """
-    dof = len(data.x) - len(model.param_values)
-    residuals = data.y - fit_function(data.x, *model.param_values)
-    return np.sum((residuals/data.dy) ** 2) / dof
+    dof = len(dataset.x) - len(model.param_values)
+    residuals = dataset.y - model.fit_function(dataset.x, *model.param_values)
+    return np.sum((residuals/dataset.dy) ** 2) / dof
 
 def autofit(data: Dataset,
             model: Model,
@@ -126,7 +128,7 @@ def autofit(data: Dataset,
     plt.figure()
     graphing_options.set_labels()
     plt.title('Initial Parameter Guess')
-    graphing_options.plot_data(data.x, data.y, data.dx, data.dy, label='Measured Data')
+    graphing_options.plot_individual_dataset(data, label='Measured Data')
     graphing_options.plot_model(guess_model_x, guess_model_y)
     plt.legend(loc="best", numpoints=1)
     results.initial_guess_graph = graphing_options.save_graph_and_close()
@@ -172,9 +174,9 @@ def autofit(data: Dataset,
     plt.figure()
     graphing_options.set_labels()
     plt.title('Best Fit of Function to Data')
-    graphing_options.plot_data(data.x, data.y, data.dx, data.dy, label='Measured Data');
+    graphing_options.plot_individual_dataset(data, label='Measured Data');
     graphing_options.plot_model(model_x, model_y);
-    plt.legend(loc='best',numpoints=1)
+    plt.legend(loc='best', numpoints=1)
     results.autofit_graph = graphing_options.save_graph_and_close()
     
     # The residuals plot

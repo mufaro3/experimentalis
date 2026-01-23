@@ -159,7 +159,7 @@ class CustomFitModel(Model):
             param_names=list(initial_params.keys()),
             param_values=np.array(list(initial_params.values())),
             param_uncerts=np.full(len(initial_params), -1.0),
-            param_bounds=bounds
+            param_bounds=param_bounds
         )
 
 class ExponentialOffsetModel(Model):

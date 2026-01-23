@@ -132,7 +132,7 @@ class GraphingOptions:
         :type colors: list[str]
         """
         plt.figure()
-        plt.title(graphing_options.default_title())
+        plt.title(self.default_title())
 
         n = len(datasets)
         if labels is None:
@@ -141,9 +141,9 @@ class GraphingOptions:
             colors = [None] * n
         
         for dataset, label, color in zip(datasets, labels, colors):
-            graphing_options.plot_data(dataset, label, color)
+            self.plot_individual_dataset(dataset, label, color)
             
-        graphing_options.set_labels()
+        self.set_labels()
         plt.show()
     
     def plot_model(self, model_x: NDArray, model_y: NDArray):

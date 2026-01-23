@@ -1,0 +1,17 @@
+AUTHORS
+LICENSE
+README
+setup.py
+experimentalis/__init__.py
+experimentalis/data.py
+experimentalis/dataset.py
+experimentalis/fitting.py
+experimentalis/models.py
+experimentalis/plotting.py
+experimentalis/statistics.py
+experimentalis/utils.py
+experimentalis.egg-info/PKG-INFO
+experimentalis.egg-info/SOURCES.txt
+experimentalis.egg-info/dependency_links.txt
+experimentalis.egg-info/top_level.txt
+test/test_data.py

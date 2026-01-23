@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: experimentalis
+Version: 0.0.1
+Summary: A loose collection of functions and things developed for analyzing experimental data, including basic extensible modeling and data management.
+Author: mm
+License-File: LICENSE
+License-File: AUTHORS
