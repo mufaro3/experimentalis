@@ -1,7 +1,0 @@
-Statistics
-==========
-
-.. automodule:: experimentalis.statistics
-   :members:
-   :undoc-members:
-   :show-inheritance:

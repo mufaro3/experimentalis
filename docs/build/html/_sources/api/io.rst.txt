@@ -1,7 +1,0 @@
-Basic File I/O Management
-=========================
-
-.. automodule:: experimentalis.io
-   :members:
-   :undoc-members:
-   :show-inheritance:

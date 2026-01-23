@@ -1,7 +1,0 @@
-Data module
-===========
-
-.. automodule:: experimentalis.data
-   :members:
-   :undoc-members:
-   :show-inheritance:

@@ -1,7 +1,0 @@
-Extension Modules
-=================
-
-.. automodule:: experimentalis.modules.oscilloscope
-   :members:
-   :undoc-members:
-   :show-inheritance:
