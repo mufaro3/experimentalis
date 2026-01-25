@@ -50,4 +50,9 @@ class Dataset:
         if self.x.size != self.y.size:
             raise ValueError(f'x has length {self.x.size} and y has length {self.y.size}, both must be equal')
 
-        
+
+    def size(self):
+        """
+        Returns the size of the dataset
+        """
+        return self.x.size

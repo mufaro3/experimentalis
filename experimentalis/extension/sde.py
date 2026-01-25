@@ -161,23 +161,12 @@ class LearnedDriftGBM(Model):
         ])
         num_weights = flat_weights.size
         
-        # set the parameter bounds
-        volatility_min, volatility_max = volatility_bounds
-        lower_bounds = np.concatenate([
-            np.array([volatility_min]),
-            np.full(num_weights, -np.inf)
-        ])
-        upper_bounds = np.concatenate([
-            np.array([volatility_max]),
-            np.full(num_weights, np.inf)
-        ])
-        
         super().__init__(
-            fit_function  = self.evaluate,
-            param_names   = [ 'Volatility' ] + [ f'Weight {i}' for i in range(num_weights) ],
-            param_values  = [ volatility, *flat_weights ],
-            param_uncerts = np.full(num_weights + 1, -1.0),
-            param_bounds  = (lower_bounds, upper_bounds)
+            fit_function  = self.fit_data,
+            param_names   = [ 'Volatility' ],
+            param_values  = [ volatility ],
+            param_uncerts = [-1.0],
+            param_bounds  = ([volatility_min],[volatility_max])
         )
 
     def unflatten_weights(self, flat: NDArray | float):
@@ -196,7 +185,7 @@ class LearnedDriftGBM(Model):
             index += size
         return rebuilt
 
-    def evaluate(self, t: float | NDArray, volatility: float, *weights: float | NDArray):
+    def evaluate(self, t: float | NDArray, volatility: float):
         """
         Simultaneously trains the model and evaluates it on the present data.
 

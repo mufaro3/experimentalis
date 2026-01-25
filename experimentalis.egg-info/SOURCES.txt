@@ -8,7 +8,6 @@ experimentalis/dataset.py
 experimentalis/fitting.py
 experimentalis/models.py
 experimentalis/plotting.py
-experimentalis/statistics.py
 experimentalis/utils.py
 experimentalis.egg-info/PKG-INFO
 experimentalis.egg-info/SOURCES.txt

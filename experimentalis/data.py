@@ -2,9 +2,9 @@
 Data module for the Experimentalis library.
 """
 
-from dataclasses import dataclass
 import numpy as np
 from numpy.typing import NDArray
+from matplotlib import pyplot as plt
 import warnings
 from .plotting import GraphingOptions
 from .dataset import Dataset
@@ -34,7 +34,7 @@ def dataset_apply_selector(dataset: Dataset, selector):
     
     :param dataset: Dataset to be transformed
     :type dataset: Dataset
-
+    
     :param selector: A NumPy-compatible selector. This can be a slice, an index array, or a boolean mask.
     :type selector: slice or numpy.ndarray
 
@@ -101,6 +101,8 @@ def trim_dataset(dataset: Dataset,
     trimmed = dataset_apply_selector(dataset, slice(*trim_range))
     
     if plot:
+        indices = np.arange(dataset.size())
+        
         plt.figure()
         plt.scatter(indices, dataset.y, marker='.')
         graphing_options.set_labels(xlabel='Index')
@@ -173,8 +175,8 @@ def pack_dataset(dataset: Dataset, packing_factor: int = 100):
 
         :returns: A copy of the array after packing.
         """
-        n_blocks = len(A) // block_size
-        return A[:n_blocks * block_size]\
+        n_blocks = len(array) // block_size
+        return array[:n_blocks * block_size]\
             .reshape(n_blocks, block_size)\
             .mean(axis=1)
 

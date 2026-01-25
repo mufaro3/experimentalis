@@ -245,12 +245,12 @@ class OffsetSineModel(Model):
             param_uncerts=np.array([-1, -1, -1, -1])
         )
 
-class RingdownModel(Model):
+class DampedHarmonicModel(Model):
     """
-    The `Ringdown Model`_, used for fitting the time-domain response of a
+    The `Damped Harmoinc Model`_, used for fitting the time-domain response of a
     lightly-damped harmonic oscillator (or other sinusoid).
 
-    .. _Ringdown Model: https://openstax.org/books/university-physics-volume-1/pages/15-5-damped-oscillations#fs-id1167134928721
+    .. _Damped Harmonic: https://openstax.org/books/university-physics-volume-1/pages/15-5-damped-oscillations#fs-id1167134928721
 
     
     .. math::
@@ -259,23 +259,23 @@ class RingdownModel(Model):
 
     :param amplitude: Amplitude :math:`A`
     :param time_constant: Frequency :math:`\\tau`
-    :param resonant_frequency: Phase :math:`f_0`
+    :param frequency: Phase :math:`f_0`
     :param phase: Offset :math:`\\phi`
 
     :type amplitude: float
     :type time_constant: float
-    :type resonant_frequency: float
+    :type frequency: float
     :type phase: float
     """
-    def __init__(self, amplitude, time_constant, resonant_frequency, phase):
-        def fit_function(x, amplitude, time_constant, resonant_frequency, phase):
+    def __init__(self, amplitude, time_constant, frequency, phase):
+        def fit_function(x, amplitude, time_constant, frequency, phase):
             return amplitude * np.exp(-x/time_constant) * \
-                np.cos(2.0 * np.pi * resonant_frequency * x + phase)
+                np.cos(2.0 * np.pi * frequency * x + phase)
         
         super().__init__(
             fit_function=fit_function,
-            param_names=['Amplitude', 'Time Constant', 'Resonant Frequency', 'Phase'],
-            param_values=np.array([amplitude, time_constant, resonant_frequency, phase]),
+            param_names=['Amplitude', 'Damping/Time Constant', 'Frequency', 'Phase'],
+            param_values=np.array([amplitude, time_constant, frequency, phase]),
             param_uncerts=np.array([-1, -1, -1, -1])
         )
 
